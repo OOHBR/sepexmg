@@ -110,7 +110,7 @@
 
     form { padding: 36px; display: grid; gap: 36px; }
 
-    /* SEÇÕES — textos maiores */
+    /* SEÇÕES */
     .ooh-section { opacity: 0; transform: translateY(20px); transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1); }
     .ooh-section.revealed { opacity: 1; transform: translateY(0); }
 
@@ -150,7 +150,7 @@
     input::placeholder, textarea::placeholder { color: var(--text-faint); }
     textarea { min-height: 110px; resize: vertical; }
 
-    /* FIELDSETS — legend virou div interno, sem flutuar fora do box */
+    /* FIELDSETS */
     fieldset {
       border: 1px solid rgba(13,110,255,0.16); border-radius: 12px;
       padding: 0; background: rgba(13,110,255,0.03); margin-bottom: 16px;
@@ -160,7 +160,6 @@
     fieldset:last-of-type { margin-bottom: 0; }
     fieldset:focus-within { border-color: rgba(13,110,255,0.4); }
 
-    /* remove estilo nativo do legend e trata como bloco normal */
     legend {
       float: none;
       display: block;
@@ -171,7 +170,6 @@
       color: var(--text);
       line-height: 1.6;
       font-family: var(--font-body);
-      /* reset do comportamento flutuante nativo */
       margin: 0;
     }
 
@@ -216,6 +214,155 @@
 
     @keyframes popIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
+    /* =============================================
+       POPUP MODAL DE SUCESSO
+    ============================================= */
+    #success-popup-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(3, 7, 18, 0.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    #success-popup-overlay.show {
+      display: flex;
+      animation: overlayIn 0.3s ease both;
+    }
+    @keyframes overlayIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    #success-popup {
+      background: #0d1526;
+      border: 1px solid rgba(13,110,255,0.45);
+      border-radius: 24px;
+      padding: 52px 44px 44px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 0 80px rgba(13,110,255,0.25), 0 32px 64px rgba(0,0,0,0.6);
+      position: relative;
+      animation: popupIn 0.45s cubic-bezier(0.16,1,0.3,1) both;
+    }
+    @keyframes popupIn {
+      from { opacity: 0; transform: scale(0.88) translateY(24px); }
+      to   { opacity: 1; transform: scale(1)    translateY(0);     }
+    }
+
+    .popup-glow {
+      position: absolute;
+      inset: -1px;
+      border-radius: 24px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(13,110,255,0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .popup-icon-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 28px;
+      border-radius: 50%;
+      background: rgba(13,110,255,0.12);
+      border: 1px solid rgba(13,110,255,0.3);
+      box-shadow: 0 0 32px rgba(13,110,255,0.25);
+      animation: iconPop 0.55s cubic-bezier(0.16,1,0.3,1) 0.15s both;
+    }
+    @keyframes iconPop {
+      from { transform: scale(0.4); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+    .popup-icon-wrap svg {
+      width: 38px;
+      height: 38px;
+      stroke: #60c8ff;
+      fill: none;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .popup-checkmark {
+      stroke-dasharray: 48;
+      stroke-dashoffset: 48;
+      animation: drawCheck 0.5s ease 0.45s forwards;
+    }
+    @keyframes drawCheck {
+      to { stroke-dashoffset: 0; }
+    }
+
+    #success-popup h2 {
+      font-family: var(--font-head);
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+      animation: fadeUp 0.4s ease 0.25s both;
+    }
+
+    #success-popup p {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 34ch;
+      margin: 0 auto 32px;
+      animation: fadeUp 0.4s ease 0.35s both;
+    }
+
+    .popup-divider {
+      width: 56px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--yellow));
+      border-radius: 2px;
+      margin: 0 auto 32px;
+      box-shadow: 0 0 10px var(--blue-glow);
+      animation: fadeUp 0.4s ease 0.4s both;
+    }
+
+    #popup-close-btn {
+      background: var(--blue);
+      color: #fff;
+      border: none;
+      padding: 15px 40px;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: var(--font-head);
+      letter-spacing: 0.03em;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 24px rgba(13,110,255,0.4);
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      animation: fadeUp 0.4s ease 0.45s both;
+    }
+    #popup-close-btn:hover {
+      background: #1a7aff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(13,110,255,0.55);
+    }
+    #popup-close-btn:active { transform: translateY(0); }
+
+    /* confetti particles */
+    .confetti-particle {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 2px;
+      pointer-events: none;
+      animation: confettiFall var(--dur, 1.2s) ease-out var(--delay, 0s) both;
+    }
+    @keyframes confettiFall {
+      0%   { opacity: 1; transform: translate(0, 0) rotate(0deg) scale(1); }
+      100% { opacity: 0; transform: translate(var(--tx, 0px), var(--ty, 80px)) rotate(var(--rot, 360deg)) scale(0.4); }
+    }
+
     .ooh-footer { text-align: center; margin-top: 40px; font-size: 12px; color: var(--text-faint); letter-spacing: 0.04em; display: flex; align-items: center; justify-content: center; gap: 8px; }
     .ooh-footer::before, .ooh-footer::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(13,110,255,0.2), transparent); }
 
@@ -231,6 +378,8 @@
       #cursor-glow { display: none; }
       .orb-1, .orb-2, .orb-3 { opacity: 0.14; filter: blur(60px); }
       .ooh-section > h2 { font-size: 20px; }
+      #success-popup { padding: 40px 24px 32px; }
+      #success-popup h2 { font-size: 22px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -250,6 +399,23 @@
 <div class="orb orb-2"></div>
 <div class="orb orb-3"></div>
 <div id="cursor-glow"></div>
+
+<!-- POPUP MODAL DE SUCESSO -->
+<div id="success-popup-overlay" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+  <div id="success-popup">
+    <div class="popup-glow"></div>
+    <div class="popup-icon-wrap">
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <circle cx="24" cy="24" r="20" stroke="rgba(13,110,255,0.4)" stroke-width="1.5" fill="none"/>
+        <polyline class="popup-checkmark" points="14,24 21,32 34,16"/>
+      </svg>
+    </div>
+    <h2 id="popup-title">Obrigado por participar!</h2>
+    <div class="popup-divider"></div>
+    <p>Suas informações foram recebidas com sucesso.</p>
+    <button id="popup-close-btn" autofocus>Fechar</button>
+  </div>
+</div>
 
 <header class="site-header">
   <div class="header-title">SEPEX-MG · Código de Conduta Ética e Conformidade</div>
@@ -409,12 +575,6 @@
       <div class="submit-area">
         <p class="submit-note">Seus dados são tratados com confidencialidade, conforme a LGPD, e utilizados exclusivamente para fins institucionais do SEPEX-MG.</p>
         <button type="submit" class="ooh-btn" id="btnSubmit">Enviar Adesão</button>
-        <div id="mensagem-sucesso">
-          <span class="success-icon">✅</span>
-          <strong>Adesão enviada com sucesso!</strong>
-          <span>Obrigado pelo compromisso com as boas práticas.</span>
-          <div class="success-bar"></div>
-        </div>
         <div id="mensagem-erro">❌ Erro ao enviar. Por favor, tente novamente ou entre em contato com o SEPEX-MG.</div>
       </div>
 
@@ -426,38 +586,93 @@
 </div>
 
 <script>
+  /* ---------- POPUP ---------- */
+  var overlay = document.getElementById('success-popup-overlay');
+  var closeBtn = document.getElementById('popup-close-btn');
+
+  function showSuccessPopup() {
+    overlay.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    spawnConfetti();
+    closeBtn.focus();
+  }
+
+  function hideSuccessPopup() {
+    overlay.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  closeBtn.addEventListener('click', hideSuccessPopup);
+
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) hideSuccessPopup();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && overlay.classList.contains('show')) hideSuccessPopup();
+  });
+
+  /* ---------- CONFETTI ---------- */
+  var COLORS = ['#0d6eff','#60a5fa','#ffe900','#ffffff','#4ade80','#f472b6'];
+  function spawnConfetti() {
+    var popup = document.getElementById('success-popup');
+    for (var i = 0; i < 36; i++) {
+      var el = document.createElement('div');
+      el.className = 'confetti-particle';
+      var angle = Math.random() * 360;
+      var dist  = 80 + Math.random() * 120;
+      var tx    = Math.round(Math.cos(angle * Math.PI / 180) * dist);
+      var ty    = Math.round(Math.sin(angle * Math.PI / 180) * dist - 60);
+      el.style.cssText = [
+        'background:' + COLORS[Math.floor(Math.random() * COLORS.length)],
+        '--tx:' + tx + 'px',
+        '--ty:' + ty + 'px',
+        '--rot:' + (Math.random() > 0.5 ? '' : '-') + Math.round(200 + Math.random() * 320) + 'deg',
+        '--dur:' + (0.8 + Math.random() * 0.7).toFixed(2) + 's',
+        '--delay:' + (Math.random() * 0.25).toFixed(2) + 's',
+        'left:' + (35 + Math.random() * 30) + '%',
+        'top:20%'
+      ].join(';');
+      popup.appendChild(el);
+      el.addEventListener('animationend', function() { this.remove(); });
+    }
+  }
+
+  /* ---------- SUBMIT ---------- */
   document.getElementById('meuFormularioOOH').addEventListener('submit', function(e) {
     e.preventDefault();
-    var btn = document.getElementById('btnSubmit');
-    var sucesso = document.getElementById('mensagem-sucesso');
+    var btn  = document.getElementById('btnSubmit');
     var erro = document.getElementById('mensagem-erro');
     btn.disabled = true; btn.textContent = 'Enviando…';
-    sucesso.style.display = 'none'; erro.style.display = 'none';
+    erro.style.display = 'none';
+
     var formData = new FormData(this);
     var scriptURL = 'https://script.google.com/macros/s/AKfycbwcv7Li-1jn0sMuScBbzjI84LxLDua14slr8LHBnccoKSwkUYULldARXBK6eIEkzW14IA/exec';
+
     fetch(scriptURL, { method: 'POST', body: formData })
       .then(function() {
-        sucesso.style.display = 'block';
+        showSuccessPopup();
         document.getElementById('meuFormularioOOH').reset();
         updateProgress();
-        btn.textContent = 'Enviar Adesão'; btn.disabled = false;
-        sucesso.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        setTimeout(function() { sucesso.style.display = 'none'; }, 9000);
+        btn.textContent = 'Enviar Adesão';
+        btn.disabled = false;
       })
       .catch(function(err) {
         console.error('Erro:', err.message);
         erro.style.display = 'block';
-        btn.textContent = 'Tentar novamente'; btn.disabled = false;
+        btn.textContent = 'Tentar novamente';
+        btn.disabled = false;
       });
   });
 
+  /* ---------- PROGRESSO ---------- */
   function updateProgress() {
     var sections = document.querySelectorAll('.ooh-section[data-section]');
     var filled = 0, highest = 0;
     sections.forEach(function(sec) {
-      var idx = parseInt(sec.getAttribute('data-section'));
+      var idx    = parseInt(sec.getAttribute('data-section'));
       var radios = sec.querySelectorAll('input[type="radio"]:checked');
-      var texts = sec.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"]');
+      var texts  = sec.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"]');
       var hasText = false;
       texts.forEach(function(t){ if(t.value.trim()) hasText = true; });
       if (radios.length > 0 || hasText) { filled++; if (idx > highest) highest = idx; }
@@ -469,8 +684,9 @@
   }
 
   document.getElementById('meuFormularioOOH').addEventListener('change', updateProgress);
-  document.getElementById('meuFormularioOOH').addEventListener('input', updateProgress);
+  document.getElementById('meuFormularioOOH').addEventListener('input',  updateProgress);
 
+  /* ---------- SCROLL REVEAL ---------- */
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); }
@@ -480,17 +696,22 @@
     s.style.transitionDelay = (i * 0.06) + 's'; observer.observe(s);
   });
 
+  /* ---------- CURSOR GLOW ---------- */
   var glow = document.getElementById('cursor-glow');
   if (window.matchMedia('(hover: hover)').matches) {
-    document.addEventListener('mousemove', function(e) { glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px'; });
+    document.addEventListener('mousemove', function(e) {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top  = e.clientY + 'px';
+    });
   }
 
+  /* ---------- BG PARTICLES ---------- */
   (function() {
     var canvas = document.getElementById('bg-canvas');
-    var ctx = canvas.getContext('2d');
+    var ctx    = canvas.getContext('2d');
     var W, H, particles = [];
     var isMobile = window.innerWidth < 640;
-    var COUNT = isMobile ? 30 : 70;
+    var COUNT    = isMobile ? 30 : 70;
     function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
     window.addEventListener('resize', resize); resize();
     function rnd(min, max) { return min + Math.random() * (max - min); }
