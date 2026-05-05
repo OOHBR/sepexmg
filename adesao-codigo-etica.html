@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adesão ao Código de Conduta Ética — SEPEX-MG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #0d1117;
+      color: #e6edf3;
+      min-height: 100vh;
+      padding: 40px 16px 80px;
+    }
+    .ooh-form-wrapper { max-width: 720px; margin: 0 auto; }
+
+    .ooh-header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #21262d;
+    }
+    .ooh-header .badge {
+      display: inline-block;
+      background: rgba(88,166,255,0.1);
+      color: #58a6ff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    .ooh-header h1 {
+      font-size: clamp(24px, 4vw, 36px);
+      color: #ffffff;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .ooh-header p {
+      font-size: 16px;
+      color: #8b949e;
+      line-height: 1.7;
+      max-width: 56ch;
+      margin: 0 auto;
+    }
+
+    .pilares-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    .pilar-card {
+      background: #161b22;
+      border: 1px solid #21262d;
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .pilar-card .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: rgba(88,166,255,0.12);
+      color: #58a6ff;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .pilar-card h3 { font-size: 14px; font-weight: 700; color: #e6edf3; margin-bottom: 6px; }
+    .pilar-card p  { font-size: 13px; color: #8b949e; line-height: 1.6; }
+
+    .form-card {
+      background: #161b22;
+      border: 1px solid #21262d;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .form-card-header {
+      padding: 28px 32px;
+      border-bottom: 1px solid #21262d;
+    }
+    .form-card-header h2 { font-size: 20px; font-weight: 700; color: #ffffff; margin-bottom: 6px; }
+    .form-card-header p  { font-size: 14px; color: #8b949e; }
+
+    form { padding: 32px; display: grid; gap: 32px; }
+
+    .ooh-section { animation: fadeUp 0.4s ease both; }
+    .ooh-section:nth-child(1){animation-delay:0.05s}
+    .ooh-section:nth-child(2){animation-delay:0.10s}
+    .ooh-section:nth-child(3){animation-delay:0.15s}
+    .ooh-section:nth-child(4){animation-delay:0.20s}
+    .ooh-section:nth-child(5){animation-delay:0.25s}
+    .ooh-section:nth-child(6){animation-delay:0.30s}
+
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #58a6ff;
+      margin-bottom: 8px;
+    }
+    .ooh-section h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #e6edf3;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    .section-desc {
+      font-size: 14px;
+      color: #8b949e;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      max-width: 70ch;
+    }
+
+    .fields-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .field { display: grid; gap: 8px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { font-size: 13px; font-weight: 600; color: #c9d1d9; }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      color: #e6edf3;
+      padding: 12px 14px;
+      font-size: 15px;
+      font-family: inherit;
+      border-radius: 8px;
+      width: 100%;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    input:focus, textarea:focus {
+      border-color: #58a6ff;
+      box-shadow: 0 0 0 3px rgba(88,166,255,0.15);
+    }
+    input::placeholder, textarea::placeholder { color: #484f58; }
+    textarea { min-height: 110px; resize: vertical; }
+
+    fieldset {
+      border: 1px solid #21262d;
+      border-radius: 12px;
+      padding: 20px;
+      background: #0d1117;
+      margin-bottom: 16px;
+    }
+    fieldset:last-of-type { margin-bottom: 0; }
+    legend {
+      padding: 0 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #e6edf3;
+      line-height: 1.5;
+    }
+    .options { display: grid; gap: 10px; margin-top: 14px; }
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #161b22;
+      border: 1px solid #21262d;
+      border-radius: 10px;
+      padding: 13px 16px;
+      cursor: pointer;
+      font-size: 14px;
+      color: #c9d1d9;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .option:hover { border-color: #58a6ff; background: rgba(88,166,255,0.05); }
+    .option input[type="radio"] { accent-color: #58a6ff; width: 16px; height: 16px; flex-shrink: 0; }
+
+    .declaro-box {
+      background: rgba(35,134,54,0.08);
+      border: 1px solid rgba(35,134,54,0.28);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .declaro-box legend { color: #7ee787; font-weight: 700; }
+    .declaro-box .option { border-color: rgba(35,134,54,0.2); }
+    .declaro-box .option:hover { border-color: #3fb950; background: rgba(35,134,54,0.08); }
+
+    .submit-area { display: grid; gap: 16px; }
+    .submit-note { font-size: 13px; color: #8b949e; line-height: 1.7; text-align: center; }
+
+    .ooh-btn {
+      background: #238636;
+      color: #ffffff;
+      border: none;
+      padding: 15px 24px;
+      font-size: 16px;
+      font-weight: 700;
+      font-family: inherit;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(35,134,54,0.3);
+    }
+    .ooh-btn:hover { background: #2ea043; transform: translateY(-1px); box-shadow: 0 8px 20px rgba(35,134,54,0.35); }
+    .ooh-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    #mensagem-sucesso {
+      display: none;
+      background: rgba(35,134,54,0.12);
+      border: 1px solid rgba(35,134,54,0.4);
+      color: #7ee787;
+      padding: 16px; border-radius: 10px;
+      text-align: center; font-size: 15px; font-weight: 600;
+    }
+    #mensagem-erro {
+      display: none;
+      background: rgba(218,54,51,0.12);
+      border: 1px solid rgba(218,54,51,0.4);
+      color: #f85149;
+      padding: 16px; border-radius: 10px;
+      text-align: center; font-size: 15px; font-weight: 600;
+    }
+
+    .ooh-footer { text-align: center; margin-top: 32px; font-size: 13px; color: #484f58; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 640px) {
+      body { padding: 24px 12px 60px; }
+      .pilares-grid, .fields-grid { grid-template-columns: 1fr; }
+      form { padding: 22px 18px; gap: 24px; }
+      .form-card-header { padding: 22px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="ooh-form-wrapper">
+
+  <header class="ooh-header">
+    <div class="badge">SEPEX-MG · Código de Conduta</div>
+    <h1>Adesão ao Código de Conduta Ética e Conformidade</h1>
+    <p>Leia cada seção com atenção e preencha os dados para registrar a ciência e a adesão formal da sua empresa ao Código de Conduta Ética e Conformidade do SEPEX-MG.</p>
+  </header>
+
+  <div class="pilares-grid">
+    <div class="pilar-card">
+      <div class="num">01</div>
+      <h3>Livre Concorrência</h3>
+      <p>Respeito a contratos vigentes e prazo de 60 dias de carência.</p>
+    </div>
+    <div class="pilar-card">
+      <div class="num">02</div>
+      <h3>Integridade</h3>
+      <p>Vedação a vantagem indevida a agentes públicos e práticas de compliance.</p>
+    </div>
+    <div class="pilar-card">
+      <div class="num">03</div>
+      <h3>Sustentabilidade</h3>
+      <p>Segurança dos engenhos e responsabilidade no descarte de materiais.</p>
+    </div>
+    <div class="pilar-card">
+      <div class="num">04</div>
+      <h3>Proteção de Dados (LGPD)</h3>
+      <p>Coleta mínima, canal ao titular e indicação de DPO.</p>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <div class="form-card-header">
+      <h2>Formulário de Adesão</h2>
+      <p>Todos os campos marcados com * são obrigatórios.</p>
+    </div>
+
+    <form id="meuFormularioOOH">
+
+      <!-- SEÇÃO 1 -->
+      <div class="ooh-section">
+        <div class="section-eyebrow">Seção 1</div>
+        <h2>Identificação da empresa</h2>
+        <p class="section-desc">Preencha os dados institucionais e do responsável por esta declaração.</p>
+        <div class="fields-grid">
+          <div class="field full">
+            <label for="empresa">Nome da empresa *</label>
+            <input type="text" id="empresa" name="empresa" placeholder="Razão social" required>
+          </div>
+          <div class="field">
+            <label for="cnpj">CNPJ *</label>
+            <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" required>
+          </div>
+          <div class="field">
+            <label for="cargo">Cargo / função *</label>
+            <input type="text" id="cargo" name="cargo" placeholder="Diretor(a), gerente, responsável legal" required>
+          </div>
+          <div class="field">
+            <label for="responsavel">Nome do responsável *</label>
+            <input type="text" id="responsavel" name="responsavel" placeholder="Nome completo" required>
+          </div>
+          <div class="field">
+            <label for="email">E-mail corporativo *</label>
+            <input type="email" id="email" name="email" placeholder="nome@empresa.com.br" required>
+          </div>
+          <div class="field">
+            <label for="telefone">Telefone</label>
+            <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000">
+          </div>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 2 -->
+      <div class="ooh-section">
+        <div class="section-eyebrow">Seção 2</div>
+        <h2>Livre Concorrência</h2>
+        <p class="section-desc">É vedado abordar clientes, anunciantes ou locadores com vínculo contratual ativo com outra associada. O prazo de carência após encerramento formal é de 60 dias.</p>
+        <fieldset>
+          <legend>Minha empresa conhece e respeita o prazo de carência de 60 dias após o encerramento formal de vínculo contratual.</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="carencia60" value="Sim, conhecemos e respeitamos" required> Sim, conhecemos e respeitamos</label>
+            <label class="option"><input type="radio" name="carencia60" value="Não temos clareza sobre essa regra"> Não temos clareza sobre essa regra</label>
+            <label class="option"><input type="radio" name="carencia60" value="Tenho dúvidas, preciso de orientação"> Tenho dúvidas, preciso de orientação</label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Minha empresa se compromete a não interferir em contratos vigentes de outras associadas.</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="contratos" value="Concordo" required> Concordo</label>
+            <label class="option"><input type="radio" name="contratos" value="Não concordo"> Não concordo</label>
+            <label class="option"><input type="radio" name="contratos" value="Preciso de mais informações"> Preciso de mais informações</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- SEÇÃO 3 -->
+      <div class="ooh-section">
+        <div class="section-eyebrow">Seção 3</div>
+        <h2>Integridade e Setor Público</h2>
+        <p class="section-desc">É proibido oferecer vantagem indevida a agente público ou terceiros. A empresa deve orientar seus colaboradores e manter práticas de integridade.</p>
+        <fieldset>
+          <legend>Nossa empresa possui ou está implementando um programa interno de compliance e integridade.</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="compliance" value="Sim, já temos" required> Sim, já temos</label>
+            <label class="option"><input type="radio" name="compliance" value="Em implantação"> Em implantação</label>
+            <label class="option"><input type="radio" name="compliance" value="Ainda não, mas queremos orientação"> Ainda não, mas queremos orientação</label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Nossos colaboradores são orientados sobre regras anticorrupção aplicáveis à atuação da empresa.</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="anticorrupcao" value="Sim" required> Sim</label>
+            <label class="option"><input type="radio" name="anticorrupcao" value="Parcialmente"> Parcialmente</label>
+            <label class="option"><input type="radio" name="anticorrupcao" value="Não"> Não</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- SEÇÃO 4 -->
+      <div class="ooh-section">
+        <div class="section-eyebrow">Seção 4</div>
+        <h2>Sustentabilidade e Meio Ambiente</h2>
+        <p class="section-desc">As estruturas publicitárias devem ser mantidas em condições de segurança e conservação. O descarte de lonas, metais e plásticos deve seguir critérios de responsabilidade ambiental.</p>
+        <fieldset>
+          <legend>Nossa empresa realiza manutenção preventiva regular dos engenhos publicitários.</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="manutencao" value="Sim" required> Sim</label>
+            <label class="option"><input type="radio" name="manutencao" value="Às vezes"> Às vezes</label>
+            <label class="option"><input type="radio" name="manutencao" value="Ainda não de forma sistemática"> Ainda não de forma sistemática</label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Nossa empresa possui procedimento para descarte adequado de lonas e demais materiais utilizados nas operações.</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="descarte" value="Sim" required> Sim</label>
+            <label class="option"><input type="radio" name="descarte" value="Em processo de adequação"> Em processo de adequação</label>
+            <label class="option"><input type="radio" name="descarte" value="Não"> Não</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- SEÇÃO 5 -->
+      <div class="ooh-section">
+        <div class="section-eyebrow">Seção 5</div>
+        <h2>Proteção de Dados Pessoais</h2>
+        <p class="section-desc">O tratamento de dados deve observar finalidade, necessidade, transparência e responsabilidade.</p>
+        <fieldset>
+          <legend>Nossa empresa coleta e utiliza apenas os dados pessoais estritamente necessários à execução de suas atividades e contratos.</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="dados" value="Sim" required> Sim</label>
+            <label class="option"><input type="radio" name="dados" value="Parcialmente"> Parcialmente</label>
+            <label class="option"><input type="radio" name="dados" value="Não sei avaliar"> Não sei avaliar</label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Nossa empresa possui ou está indicando um Encarregado de Dados (DPO).</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="dpo" value="Sim" required> Sim</label>
+            <label class="option"><input type="radio" name="dpo" value="Em processo"> Em processo</label>
+            <label class="option"><input type="radio" name="dpo" value="Não"> Não</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- SEÇÃO 6 -->
+      <div class="ooh-section">
+        <div class="section-eyebrow">Seção 6</div>
+        <h2>Ciência e Adesão</h2>
+        <p class="section-desc">Ao concluir este formulário, o responsável declara que leu, compreendeu e se compromete a observar o Código de Conduta Ética e Conformidade do SEPEX-MG, estendendo esse compromisso a colaboradores, prestadores e prepostos da empresa.</p>
+        <fieldset class="declaro-box">
+          <legend>Declaro ciência e adesão ao Código de Conduta Ética e Conformidade do SEPEX-MG.</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="adesao" value="Sim, declaro" required> Sim, declaro</label>
+            <label class="option"><input type="radio" name="adesao" value="Preciso de esclarecimentos antes"> Preciso de esclarecimentos antes</label>
+          </div>
+        </fieldset>
+        <div style="margin-top: 16px;" class="field full">
+          <label for="duvidas">Dúvidas, comentários ou pedidos de orientação</label>
+          <textarea id="duvidas" name="duvidas" placeholder="Escreva aqui sua mensagem (opcional)"></textarea>
+        </div>
+      </div>
+
+      <!-- SUBMIT -->
+      <div class="submit-area">
+        <p class="submit-note">Seus dados são tratados com confidencialidade, conforme a LGPD, e utilizados exclusivamente para fins institucionais do SEPEX-MG.</p>
+        <button type="submit" class="ooh-btn" id="btnSubmit">Enviar Adesão</button>
+        <div id="mensagem-sucesso">✅ Adesão enviada com sucesso! Obrigado pelo compromisso com as boas práticas.</div>
+        <div id="mensagem-erro">❌ Erro ao enviar. Por favor, tente novamente ou entre em contato com o SEPEX-MG.</div>
+      </div>
+
+    </form>
+  </div>
+
+  <p class="ooh-footer">SEPEX-MG · Sindicato das Empresas de Publicidade Exterior de Minas Gerais</p>
+
+</div>
+
+<script>
+  document.getElementById('meuFormularioOOH').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    var btn     = document.getElementById('btnSubmit');
+    var sucesso = document.getElementById('mensagem-sucesso');
+    var erro    = document.getElementById('mensagem-erro');
+
+    btn.disabled    = true;
+    btn.textContent = 'Enviando…';
+    sucesso.style.display = 'none';
+    erro.style.display    = 'none';
+
+    var formData = new FormData(this);
+
+    // ⚠️ Substitua pela URL do seu Google Apps Script após publicar como Web App
+    var scriptURL = 'https://script.google.com/macros/s/AKfycbw-bGpP-wB7qS0VRfK8omyJYn1y5GAibNtgrifOWeBJMky2YkDKrIGIRzbA0Gk2rYxdlg/exec';
+
+    fetch(scriptURL, { method: 'POST', body: formData })
+      .then(function() {
+        sucesso.style.display = 'block';
+        document.getElementById('meuFormularioOOH').reset();
+        btn.textContent = 'Enviar Adesão';
+        btn.disabled    = false;
+        setTimeout(function() { sucesso.style.display = 'none'; }, 7000);
+      })
+      .catch(function(err) {
+        console.error('Erro:', err.message);
+        erro.style.display  = 'block';
+        btn.textContent = 'Tentar novamente';
+        btn.disabled    = false;
+      });
+  });
+</script>
+
+</body>
+</html>
