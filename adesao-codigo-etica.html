@@ -150,6 +150,25 @@
     input::placeholder, textarea::placeholder { color: var(--text-faint); }
     textarea { min-height: 110px; resize: vertical; }
 
+    /* CNPJ erro + estado inválido */
+    .field-error {
+      font-size: 12px;
+      color: #fca5a5;
+      margin-top: 2px;
+      display: none;
+      align-items: center;
+      gap: 5px;
+    }
+    .field-error.visible { display: flex; }
+    .field-error::before { content: '\26A0'; font-size: 13px; }
+    input.input-invalid {
+      border-color: rgba(239,68,68,0.6) !important;
+      box-shadow: 0 0 0 3px rgba(239,68,68,0.15) !important;
+    }
+    input.input-valid {
+      border-color: rgba(74,222,128,0.5) !important;
+    }
+
     /* FIELDSETS */
     fieldset {
       border: 1px solid rgba(13,110,255,0.16); border-radius: 12px;
@@ -205,11 +224,6 @@
     .ooh-btn:active { transform: translateY(0); }
     .ooh-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
-    #mensagem-sucesso { display: none; background: rgba(13,110,255,0.1); border: 1px solid rgba(13,110,255,0.4); border-radius: 14px; padding: 28px 24px; text-align: center; animation: fadeUp 0.5s ease both; }
-    #mensagem-sucesso .success-icon { font-size: 40px; display: block; margin-bottom: 12px; animation: popIn 0.5s cubic-bezier(0.16,1,0.3,1) 0.1s both; }
-    #mensagem-sucesso strong { display: block; font-family: var(--font-head); font-size: 18px; color: #fff; margin-bottom: 6px; }
-    #mensagem-sucesso span { font-size: 14px; color: var(--text-muted); }
-    .success-bar { width: 60px; height: 3px; background: linear-gradient(90deg, var(--blue), var(--yellow)); border-radius: 2px; margin: 14px auto 0; box-shadow: 0 0 10px var(--blue-glow); }
     #mensagem-erro { display: none; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.35); color: #fca5a5; padding: 16px; border-radius: 12px; text-align: center; font-size: 14px; font-weight: 600; }
 
     @keyframes popIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
@@ -256,23 +270,15 @@
     }
 
     .popup-glow {
-      position: absolute;
-      inset: -1px;
-      border-radius: 24px;
+      position: absolute; inset: -1px; border-radius: 24px;
       background: radial-gradient(ellipse at 50% 0%, rgba(13,110,255,0.18) 0%, transparent 65%);
       pointer-events: none;
     }
 
     .popup-icon-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 28px;
-      border-radius: 50%;
-      background: rgba(13,110,255,0.12);
-      border: 1px solid rgba(13,110,255,0.3);
+      display: flex; align-items: center; justify-content: center;
+      width: 80px; height: 80px; margin: 0 auto 28px; border-radius: 50%;
+      background: rgba(13,110,255,0.12); border: 1px solid rgba(13,110,255,0.3);
       box-shadow: 0 0 32px rgba(13,110,255,0.25);
       animation: iconPop 0.55s cubic-bezier(0.16,1,0.3,1) 0.15s both;
     }
@@ -280,82 +286,26 @@
       from { transform: scale(0.4); opacity: 0; }
       to   { transform: scale(1);   opacity: 1; }
     }
-    .popup-icon-wrap svg {
-      width: 38px;
-      height: 38px;
-      stroke: #60c8ff;
-      fill: none;
-      stroke-width: 2.2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-    .popup-checkmark {
-      stroke-dasharray: 48;
-      stroke-dashoffset: 48;
-      animation: drawCheck 0.5s ease 0.45s forwards;
-    }
-    @keyframes drawCheck {
-      to { stroke-dashoffset: 0; }
-    }
+    .popup-icon-wrap svg { width: 38px; height: 38px; stroke: #60c8ff; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .popup-checkmark { stroke-dasharray: 48; stroke-dashoffset: 48; animation: drawCheck 0.5s ease 0.45s forwards; }
+    @keyframes drawCheck { to { stroke-dashoffset: 0; } }
 
-    #success-popup h2 {
-      font-family: var(--font-head);
-      font-size: 26px;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: -0.02em;
-      margin-bottom: 14px;
-      animation: fadeUp 0.4s ease 0.25s both;
-    }
-
-    #success-popup p {
-      font-size: 16px;
-      color: var(--text-muted);
-      line-height: 1.75;
-      max-width: 34ch;
-      margin: 0 auto 32px;
-      animation: fadeUp 0.4s ease 0.35s both;
-    }
-
-    .popup-divider {
-      width: 56px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--blue), var(--yellow));
-      border-radius: 2px;
-      margin: 0 auto 32px;
-      box-shadow: 0 0 10px var(--blue-glow);
-      animation: fadeUp 0.4s ease 0.4s both;
-    }
+    #success-popup h2 { font-family: var(--font-head); font-size: 26px; font-weight: 700; color: #fff; letter-spacing: -0.02em; margin-bottom: 14px; animation: fadeUp 0.4s ease 0.25s both; }
+    #success-popup p { font-size: 16px; color: var(--text-muted); line-height: 1.75; max-width: 34ch; margin: 0 auto 32px; animation: fadeUp 0.4s ease 0.35s both; }
+    .popup-divider { width: 56px; height: 3px; background: linear-gradient(90deg, var(--blue), var(--yellow)); border-radius: 2px; margin: 0 auto 32px; box-shadow: 0 0 10px var(--blue-glow); animation: fadeUp 0.4s ease 0.4s both; }
 
     #popup-close-btn {
-      background: var(--blue);
-      color: #fff;
-      border: none;
-      padding: 15px 40px;
-      font-size: 15px;
-      font-weight: 700;
-      font-family: var(--font-head);
-      letter-spacing: 0.03em;
-      border-radius: 12px;
-      cursor: pointer;
-      box-shadow: 0 4px 24px rgba(13,110,255,0.4);
+      background: var(--blue); color: #fff; border: none; padding: 15px 40px;
+      font-size: 15px; font-weight: 700; font-family: var(--font-head); letter-spacing: 0.03em;
+      border-radius: 12px; cursor: pointer; box-shadow: 0 4px 24px rgba(13,110,255,0.4);
       transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
       animation: fadeUp 0.4s ease 0.45s both;
     }
-    #popup-close-btn:hover {
-      background: #1a7aff;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(13,110,255,0.55);
-    }
+    #popup-close-btn:hover { background: #1a7aff; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(13,110,255,0.55); }
     #popup-close-btn:active { transform: translateY(0); }
 
-    /* confetti particles */
     .confetti-particle {
-      position: absolute;
-      width: 7px;
-      height: 7px;
-      border-radius: 2px;
-      pointer-events: none;
+      position: absolute; width: 7px; height: 7px; border-radius: 2px; pointer-events: none;
       animation: confettiFall var(--dur, 1.2s) ease-out var(--delay, 0s) both;
     }
     @keyframes confettiFall {
@@ -459,7 +409,11 @@
         <p class="section-desc">Preencha os dados institucionais e do responsável por esta declaração.</p>
         <div class="fields-grid">
           <div class="field full"><label for="empresa">Nome da empresa *</label><input type="text" id="empresa" name="empresa" placeholder="Razão social" required></div>
-          <div class="field"><label for="cnpj">CNPJ *</label><input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" required></div>
+          <div class="field">
+            <label for="cnpj">CNPJ *</label>
+            <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" maxlength="18" inputmode="numeric" autocomplete="off" required>
+            <span class="field-error" id="cnpj-erro">CNPJ inválido. Verifique o número digitado.</span>
+          </div>
           <div class="field"><label for="cargo">Cargo / função *</label><input type="text" id="cargo" name="cargo" placeholder="Diretor(a), gerente, responsável legal" required></div>
           <div class="field"><label for="responsavel">Nome do responsável *</label><input type="text" id="responsavel" name="responsavel" placeholder="Nome completo" required></div>
           <div class="field"><label for="email">E-mail corporativo *</label><input type="email" id="email" name="email" placeholder="nome@empresa.com.br" required></div>
@@ -586,8 +540,57 @@
 </div>
 
 <script>
-  /* ---------- POPUP ---------- */
-  var overlay = document.getElementById('success-popup-overlay');
+  /* =============================================
+     VALIDADOR DE CNPJ
+  ============================================= */
+  function validarCNPJ(cnpj) {
+    cnpj = cnpj.replace(/\D/g, '');
+    if (cnpj.length !== 14 || /^(\d)\1+$/.test(cnpj)) return false;
+    var soma = 0, peso = [5,4,3,2,9,8,7,6,5,4,3,2];
+    for (var i = 0; i < 12; i++) soma += parseInt(cnpj[i]) * peso[i];
+    var d1 = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+    if (parseInt(cnpj[12]) !== d1) return false;
+    soma = 0; peso = [6,5,4,3,2,9,8,7,6,5,4,3,2];
+    for (var i = 0; i < 13; i++) soma += parseInt(cnpj[i]) * peso[i];
+    var d2 = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+    return parseInt(cnpj[13]) === d2;
+  }
+
+  /* Máscara automática: 00.000.000/0000-00 */
+  var cnpjInput = document.getElementById('cnpj');
+  var cnpjErro  = document.getElementById('cnpj-erro');
+
+  cnpjInput.addEventListener('input', function() {
+    var v = this.value.replace(/\D/g, '').slice(0, 14);
+    v = v.replace(/^(\d{2})(\d)/, '$1.$2');
+    v = v.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+    v = v.replace(/\.(\d{3})(\d)/, '.$1/$2');
+    v = v.replace(/(\d{4})(\d)/, '$1-$2');
+    this.value = v;
+    /* limpa erro enquanto digita */
+    cnpjErro.classList.remove('visible');
+    this.classList.remove('input-invalid', 'input-valid');
+  });
+
+  /* validação ao sair do campo (blur) */
+  cnpjInput.addEventListener('blur', function() {
+    var raw = this.value.replace(/\D/g, '');
+    if (raw.length === 0) return; /* campo vazio — deixa o 'required' cuidar */
+    if (raw.length === 14 && validarCNPJ(raw)) {
+      this.classList.remove('input-invalid');
+      this.classList.add('input-valid');
+      cnpjErro.classList.remove('visible');
+    } else {
+      this.classList.add('input-invalid');
+      this.classList.remove('input-valid');
+      cnpjErro.classList.add('visible');
+    }
+  });
+
+  /* =============================================
+     POPUP
+  ============================================= */
+  var overlay  = document.getElementById('success-popup-overlay');
   var closeBtn = document.getElementById('popup-close-btn');
 
   function showSuccessPopup() {
@@ -596,28 +599,23 @@
     spawnConfetti();
     closeBtn.focus();
   }
-
   function hideSuccessPopup() {
     overlay.classList.remove('show');
     document.body.style.overflow = '';
   }
 
   closeBtn.addEventListener('click', hideSuccessPopup);
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) hideSuccessPopup(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && overlay.classList.contains('show')) hideSuccessPopup(); });
 
-  overlay.addEventListener('click', function(e) {
-    if (e.target === overlay) hideSuccessPopup();
-  });
-
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && overlay.classList.contains('show')) hideSuccessPopup();
-  });
-
-  /* ---------- CONFETTI ---------- */
+  /* =============================================
+     CONFETTI
+  ============================================= */
   var COLORS = ['#0d6eff','#60a5fa','#ffe900','#ffffff','#4ade80','#f472b6'];
   function spawnConfetti() {
     var popup = document.getElementById('success-popup');
     for (var i = 0; i < 36; i++) {
-      var el = document.createElement('div');
+      var el    = document.createElement('div');
       el.className = 'confetti-particle';
       var angle = Math.random() * 360;
       var dist  = 80 + Math.random() * 120;
@@ -625,34 +623,47 @@
       var ty    = Math.round(Math.sin(angle * Math.PI / 180) * dist - 60);
       el.style.cssText = [
         'background:' + COLORS[Math.floor(Math.random() * COLORS.length)],
-        '--tx:' + tx + 'px',
-        '--ty:' + ty + 'px',
+        '--tx:' + tx + 'px', '--ty:' + ty + 'px',
         '--rot:' + (Math.random() > 0.5 ? '' : '-') + Math.round(200 + Math.random() * 320) + 'deg',
         '--dur:' + (0.8 + Math.random() * 0.7).toFixed(2) + 's',
         '--delay:' + (Math.random() * 0.25).toFixed(2) + 's',
-        'left:' + (35 + Math.random() * 30) + '%',
-        'top:20%'
+        'left:' + (35 + Math.random() * 30) + '%', 'top:20%'
       ].join(';');
       popup.appendChild(el);
       el.addEventListener('animationend', function() { this.remove(); });
     }
   }
 
-  /* ---------- SUBMIT ---------- */
+  /* =============================================
+     SUBMIT
+  ============================================= */
   document.getElementById('meuFormularioOOH').addEventListener('submit', function(e) {
     e.preventDefault();
     var btn  = document.getElementById('btnSubmit');
     var erro = document.getElementById('mensagem-erro');
+
+    /* valida CNPJ antes de enviar */
+    var cnpjRaw = cnpjInput.value.replace(/\D/g, '');
+    if (!validarCNPJ(cnpjRaw)) {
+      cnpjInput.classList.add('input-invalid');
+      cnpjInput.classList.remove('input-valid');
+      cnpjErro.classList.add('visible');
+      cnpjInput.focus();
+      cnpjInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
     btn.disabled = true; btn.textContent = 'Enviando…';
     erro.style.display = 'none';
 
-    var formData = new FormData(this);
+    var formData  = new FormData(this);
     var scriptURL = 'https://script.google.com/macros/s/AKfycbwcv7Li-1jn0sMuScBbzjI84LxLDua14slr8LHBnccoKSwkUYULldARXBK6eIEkzW14IA/exec';
 
     fetch(scriptURL, { method: 'POST', body: formData })
       .then(function() {
         showSuccessPopup();
         document.getElementById('meuFormularioOOH').reset();
+        cnpjInput.classList.remove('input-valid', 'input-invalid');
         updateProgress();
         btn.textContent = 'Enviar Adesão';
         btn.disabled = false;
@@ -665,7 +676,9 @@
       });
   });
 
-  /* ---------- PROGRESSO ---------- */
+  /* =============================================
+     PROGRESSO
+  ============================================= */
   function updateProgress() {
     var sections = document.querySelectorAll('.ooh-section[data-section]');
     var filled = 0, highest = 0;
@@ -686,7 +699,9 @@
   document.getElementById('meuFormularioOOH').addEventListener('change', updateProgress);
   document.getElementById('meuFormularioOOH').addEventListener('input',  updateProgress);
 
-  /* ---------- SCROLL REVEAL ---------- */
+  /* =============================================
+     SCROLL REVEAL
+  ============================================= */
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); }
@@ -696,7 +711,9 @@
     s.style.transitionDelay = (i * 0.06) + 's'; observer.observe(s);
   });
 
-  /* ---------- CURSOR GLOW ---------- */
+  /* =============================================
+     CURSOR GLOW
+  ============================================= */
   var glow = document.getElementById('cursor-glow');
   if (window.matchMedia('(hover: hover)').matches) {
     document.addEventListener('mousemove', function(e) {
@@ -705,7 +722,9 @@
     });
   }
 
-  /* ---------- BG PARTICLES ---------- */
+  /* =============================================
+     BG PARTICLES
+  ============================================= */
   (function() {
     var canvas = document.getElementById('bg-canvas');
     var ctx    = canvas.getContext('2d');
