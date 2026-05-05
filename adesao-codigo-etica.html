@@ -59,7 +59,6 @@
       pointer-events: none; z-index: 1; transform: translate(-50%,-50%); transition: opacity 0.3s;
     }
 
-    /* ── HEADER: apenas badge SEPEX-MG centralizado, sem logo ── */
     .site-header {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       padding: 0 24px; height: 64px;
@@ -69,128 +68,67 @@
       border-bottom: 1px solid rgba(13,110,255,0.18);
       box-shadow: 0 1px 32px rgba(13,110,255,0.08);
     }
-
     .header-title {
-      font-family: var(--font-head);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--blue);
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      font-family: var(--font-head); font-size: 13px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue);
+      display: flex; align-items: center; gap: 10px;
     }
-    .header-title::before, .header-title::after {
-      content: '';
-      width: 32px; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(13,110,255,0.5));
-    }
-    .header-title::after {
-      background: linear-gradient(90deg, rgba(13,110,255,0.5), transparent);
-    }
+    .header-title::before, .header-title::after { content: ''; width: 32px; height: 1px; background: linear-gradient(90deg, transparent, rgba(13,110,255,0.5)); }
+    .header-title::after { background: linear-gradient(90deg, rgba(13,110,255,0.5), transparent); }
 
-    /* BARRA DE PROGRESSO */
-    .progress-bar-wrap {
-      position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
-      height: 3px; background: rgba(255,255,255,0.06);
-    }
-    .progress-bar-fill {
-      height: 100%; width: 0%;
-      background: linear-gradient(90deg, var(--blue) 0%, var(--yellow) 100%);
-      transition: width 0.5s cubic-bezier(0.16,1,0.3,1);
-      box-shadow: 0 0 8px var(--blue-glow);
-    }
-    .progress-label {
-      position: fixed; top: 68px; right: 16px; z-index: 99;
-      font-size: 11px; font-weight: 600; color: var(--text-muted);
-      letter-spacing: 0.04em; font-family: var(--font-head);
-    }
+    .progress-bar-wrap { position: fixed; top: 64px; left: 0; right: 0; z-index: 99; height: 3px; background: rgba(255,255,255,0.06); }
+    .progress-bar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--blue) 0%, var(--yellow) 100%); transition: width 0.5s cubic-bezier(0.16,1,0.3,1); box-shadow: 0 0 8px var(--blue-glow); }
+    .progress-label { position: fixed; top: 68px; right: 16px; z-index: 99; font-size: 11px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.04em; font-family: var(--font-head); }
 
-    .page-wrap {
-      position: relative; z-index: 2;
-      max-width: 760px; margin: 0 auto; padding: 104px 20px 80px;
-    }
+    .page-wrap { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; padding: 104px 20px 80px; }
 
     /* HERO */
-    .hero {
-      text-align: center; margin-bottom: 56px; padding-bottom: 48px;
-      border-bottom: 1px solid rgba(13,110,255,0.14);
-    }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: var(--font-head); font-size: 11px; font-weight: 700;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--yellow); background: rgba(255,233,0,0.08);
-      border: 1px solid rgba(255,233,0,0.25);
-      padding: 6px 14px; border-radius: 999px; margin-bottom: 24px;
-    }
-    .hero-eyebrow::before {
-      content: ''; width: 6px; height: 6px; border-radius: 50%;
-      background: var(--yellow); box-shadow: 0 0 8px var(--yellow);
-    }
-    .hero h1 {
-      font-family: var(--font-head); font-size: clamp(26px, 4.5vw, 42px);
-      font-weight: 700; color: #fff; line-height: 1.15;
-      letter-spacing: -0.025em; margin-bottom: 16px;
-    }
-    .hero h1 span {
-      background: linear-gradient(135deg, var(--blue) 0%, #60a5fa 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
+    .hero { text-align: center; margin-bottom: 56px; padding-bottom: 48px; border-bottom: 1px solid rgba(13,110,255,0.14); }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-head); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--yellow); background: rgba(255,233,0,0.08); border: 1px solid rgba(255,233,0,0.25); padding: 6px 14px; border-radius: 999px; margin-bottom: 24px; }
+    .hero-eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--yellow); box-shadow: 0 0 8px var(--yellow); }
+    .hero h1 { font-family: var(--font-head); font-size: clamp(26px, 4.5vw, 42px); font-weight: 700; color: #fff; line-height: 1.15; letter-spacing: -0.025em; margin-bottom: 16px; }
+    .hero h1 span { background: linear-gradient(135deg, var(--blue) 0%, #60a5fa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .hero p { font-size: 16px; color: var(--text-muted); line-height: 1.75; max-width: 54ch; margin: 0 auto 32px; }
-    .hero-scroll-hint {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 13px; color: var(--blue); font-weight: 500; cursor: pointer;
-      transition: opacity var(--transition);
-    }
+    .hero-scroll-hint { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--blue); font-weight: 500; cursor: pointer; transition: opacity var(--transition); }
     .hero-scroll-hint:hover { opacity: 0.7; }
     .hero-scroll-hint svg { animation: bounceDown 1.8s ease-in-out infinite; }
     @keyframes bounceDown { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
 
     /* PILARES */
     .pilares-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 48px; }
-    .pilar-card {
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 20px; backdrop-filter: blur(12px);
-      transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
-    }
+    .pilar-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; backdrop-filter: blur(12px); transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition); }
     .pilar-card:hover { border-color: var(--border-hov); box-shadow: 0 0 24px var(--blue-dim); transform: translateY(-2px); }
-    .pilar-card .num {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 30px; height: 30px; border-radius: 8px;
-      background: var(--blue-dim); border: 1px solid rgba(13,110,255,0.3);
-      color: var(--blue); font-family: var(--font-head); font-size: 12px; font-weight: 800; margin-bottom: 12px;
-    }
+    .pilar-card .num { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 8px; background: var(--blue-dim); border: 1px solid rgba(13,110,255,0.3); color: var(--blue); font-family: var(--font-head); font-size: 12px; font-weight: 800; margin-bottom: 12px; }
     .pilar-card h3 { font-family: var(--font-head); font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
     .pilar-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
 
     /* FORM CARD */
-    .form-card {
-      background: rgba(255,255,255,0.03); border: 1px solid var(--border);
-      border-radius: 20px; overflow: hidden; backdrop-filter: blur(16px);
-      box-shadow: 0 0 60px rgba(13,110,255,0.06), inset 0 1px 0 rgba(255,255,255,0.06);
-    }
-    .form-card-header {
-      padding: 30px 36px; border-bottom: 1px solid var(--border);
-      background: linear-gradient(135deg, rgba(13,110,255,0.07) 0%, transparent 60%);
-    }
+    .form-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; backdrop-filter: blur(16px); box-shadow: 0 0 60px rgba(13,110,255,0.06), inset 0 1px 0 rgba(255,255,255,0.06); }
+    .form-card-header { padding: 30px 36px; border-bottom: 1px solid var(--border); background: linear-gradient(135deg, rgba(13,110,255,0.07) 0%, transparent 60%); }
     .form-card-header h2 { font-family: var(--font-head); font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 6px; }
     .form-card-header p { font-size: 14px; color: var(--text-muted); }
 
     form { padding: 36px; display: grid; gap: 36px; }
 
-    /* SEÇÕES */
+    /* SEÇÕES — textos maiores */
     .ooh-section { opacity: 0; transform: translateY(20px); transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1); }
     .ooh-section.revealed { opacity: 1; transform: translateY(0); }
+
     .section-eyebrow {
-      font-family: var(--font-head); font-size: 11px; font-weight: 700;
+      font-family: var(--font-head); font-size: 13px; font-weight: 700;
       letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue);
-      display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+      display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
     }
     .section-eyebrow::before { content: ''; width: 18px; height: 2px; background: linear-gradient(90deg, var(--blue), transparent); border-radius: 2px; }
-    .ooh-section > h2 { font-family: var(--font-head); font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 8px; letter-spacing: -0.015em; }
-    .section-desc { font-size: 14px; color: var(--text-muted); line-height: 1.75; margin-bottom: 22px; max-width: 68ch; }
+
+    .ooh-section > h2 {
+      font-family: var(--font-head); font-size: 24px; font-weight: 700;
+      color: var(--text); margin-bottom: 10px; letter-spacing: -0.015em;
+    }
+    .section-desc {
+      font-size: 15px; color: var(--text-muted); line-height: 1.75;
+      margin-bottom: 24px; max-width: 68ch;
+    }
 
     /* FIELDS */
     .fields-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
@@ -212,17 +150,33 @@
     input::placeholder, textarea::placeholder { color: var(--text-faint); }
     textarea { min-height: 110px; resize: vertical; }
 
-    /* FIELDSETS */
+    /* FIELDSETS — legend virou div interno, sem flutuar fora do box */
     fieldset {
       border: 1px solid rgba(13,110,255,0.16); border-radius: 12px;
-      padding: 20px; background: rgba(13,110,255,0.03); margin-bottom: 16px;
+      padding: 0; background: rgba(13,110,255,0.03); margin-bottom: 16px;
       transition: border-color var(--transition);
+      display: flex; flex-direction: column;
     }
     fieldset:last-of-type { margin-bottom: 0; }
     fieldset:focus-within { border-color: rgba(13,110,255,0.4); }
-    legend { padding: 0 10px; font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.6; font-family: var(--font-body); }
 
-    .options { display: grid; gap: 10px; margin-top: 16px; }
+    /* remove estilo nativo do legend e trata como bloco normal */
+    legend {
+      float: none;
+      display: block;
+      width: 100%;
+      padding: 18px 20px 0;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.6;
+      font-family: var(--font-body);
+      /* reset do comportamento flutuante nativo */
+      margin: 0;
+    }
+
+    .options { display: grid; gap: 10px; padding: 16px 20px 20px; }
+
     .option {
       display: flex; align-items: center; gap: 14px;
       background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
@@ -230,69 +184,39 @@
       transition: border-color var(--transition), background var(--transition), color var(--transition), box-shadow var(--transition), transform var(--transition);
       position: relative; overflow: hidden;
     }
-    .option::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(13,110,255,0.08) 0%, transparent 60%);
-      opacity: 0; transition: opacity var(--transition);
-    }
+    .option::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,110,255,0.08) 0%, transparent 60%); opacity: 0; transition: opacity var(--transition); }
     .option:hover { border-color: rgba(13,110,255,0.4); color: var(--text); transform: translateX(3px); }
     .option:hover::before { opacity: 1; }
     .option input[type="radio"] { width: 18px; height: 18px; flex-shrink: 0; accent-color: var(--blue); position: relative; z-index: 1; cursor: pointer; }
     .option:has(input:checked) { border-color: var(--blue); background: rgba(13,110,255,0.1); color: var(--text); box-shadow: 0 0 16px rgba(13,110,255,0.2); }
-    .option:has(input:checked)::after {
-      content: ''; position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
-      width: 6px; height: 6px; border-radius: 50%; background: var(--yellow); box-shadow: 0 0 8px var(--yellow);
-    }
+    .option:has(input:checked)::after { content: ''; position: absolute; right: 14px; top: 50%; transform: translateY(-50%); width: 6px; height: 6px; border-radius: 50%; background: var(--yellow); box-shadow: 0 0 8px var(--yellow); }
 
-    .declaro-box { background: rgba(13,110,255,0.06); border: 1px solid rgba(13,110,255,0.3); border-radius: 12px; padding: 20px; }
+    .declaro-box { background: rgba(13,110,255,0.06); border: 1px solid rgba(13,110,255,0.3); }
     .declaro-box legend { color: #60a5fa; font-weight: 700; }
     .declaro-box .option:has(input:checked) { border-color: var(--blue); background: rgba(13,110,255,0.15); box-shadow: 0 0 20px rgba(13,110,255,0.25); }
 
     /* SUBMIT */
     .submit-area { display: grid; gap: 16px; }
-    .submit-note {
-      font-size: 13px; color: var(--text-faint); line-height: 1.7; text-align: center;
-      display: flex; align-items: center; justify-content: center; gap: 6px;
-    }
+    .submit-note { font-size: 13px; color: var(--text-faint); line-height: 1.7; text-align: center; display: flex; align-items: center; justify-content: center; gap: 6px; }
     .submit-note::before { content: '🔒'; font-size: 14px; }
 
-    .ooh-btn {
-      background: var(--blue); color: #fff; border: none;
-      padding: 17px 28px; font-size: 16px; font-weight: 700; font-family: var(--font-head);
-      letter-spacing: 0.02em; border-radius: 12px; cursor: pointer; width: 100%;
-      position: relative; overflow: hidden;
-      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-      box-shadow: 0 4px 24px rgba(13,110,255,0.4);
-    }
-    .ooh-btn::before {
-      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent); transition: left 0.5s;
-    }
+    .ooh-btn { background: var(--blue); color: #fff; border: none; padding: 17px 28px; font-size: 16px; font-weight: 700; font-family: var(--font-head); letter-spacing: 0.02em; border-radius: 12px; cursor: pointer; width: 100%; position: relative; overflow: hidden; transition: background var(--transition), transform var(--transition), box-shadow var(--transition); box-shadow: 0 4px 24px rgba(13,110,255,0.4); }
+    .ooh-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent); transition: left 0.5s; }
     .ooh-btn:hover { background: #1a7aff; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(13,110,255,0.5); }
     .ooh-btn:hover::before { left: 100%; }
     .ooh-btn:active { transform: translateY(0); }
     .ooh-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
-    #mensagem-sucesso {
-      display: none; background: rgba(13,110,255,0.1); border: 1px solid rgba(13,110,255,0.4);
-      border-radius: 14px; padding: 28px 24px; text-align: center; animation: fadeUp 0.5s ease both;
-    }
+    #mensagem-sucesso { display: none; background: rgba(13,110,255,0.1); border: 1px solid rgba(13,110,255,0.4); border-radius: 14px; padding: 28px 24px; text-align: center; animation: fadeUp 0.5s ease both; }
     #mensagem-sucesso .success-icon { font-size: 40px; display: block; margin-bottom: 12px; animation: popIn 0.5s cubic-bezier(0.16,1,0.3,1) 0.1s both; }
     #mensagem-sucesso strong { display: block; font-family: var(--font-head); font-size: 18px; color: #fff; margin-bottom: 6px; }
     #mensagem-sucesso span { font-size: 14px; color: var(--text-muted); }
     .success-bar { width: 60px; height: 3px; background: linear-gradient(90deg, var(--blue), var(--yellow)); border-radius: 2px; margin: 14px auto 0; box-shadow: 0 0 10px var(--blue-glow); }
-
-    #mensagem-erro {
-      display: none; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.35);
-      color: #fca5a5; padding: 16px; border-radius: 12px; text-align: center; font-size: 14px; font-weight: 600;
-    }
+    #mensagem-erro { display: none; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.35); color: #fca5a5; padding: 16px; border-radius: 12px; text-align: center; font-size: 14px; font-weight: 600; }
 
     @keyframes popIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-    .ooh-footer {
-      text-align: center; margin-top: 40px; font-size: 12px; color: var(--text-faint); letter-spacing: 0.04em;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-    }
+    .ooh-footer { text-align: center; margin-top: 40px; font-size: 12px; color: var(--text-faint); letter-spacing: 0.04em; display: flex; align-items: center; justify-content: center; gap: 8px; }
     .ooh-footer::before, .ooh-footer::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(13,110,255,0.2), transparent); }
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
@@ -306,6 +230,7 @@
       .site-header { padding: 0 16px; }
       #cursor-glow { display: none; }
       .orb-1, .orb-2, .orb-3 { opacity: 0.14; filter: blur(60px); }
+      .ooh-section > h2 { font-size: 20px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -326,7 +251,6 @@
 <div class="orb orb-3"></div>
 <div id="cursor-glow"></div>
 
-<!-- HEADER: sem logo, apenas identificação institucional -->
 <header class="site-header">
   <div class="header-title">SEPEX-MG · Código de Conduta Ética e Conformidade</div>
 </header>
@@ -368,30 +292,12 @@
         <h2>Identificação da empresa</h2>
         <p class="section-desc">Preencha os dados institucionais e do responsável por esta declaração.</p>
         <div class="fields-grid">
-          <div class="field full">
-            <label for="empresa">Nome da empresa *</label>
-            <input type="text" id="empresa" name="empresa" placeholder="Razão social" required>
-          </div>
-          <div class="field">
-            <label for="cnpj">CNPJ *</label>
-            <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" required>
-          </div>
-          <div class="field">
-            <label for="cargo">Cargo / função *</label>
-            <input type="text" id="cargo" name="cargo" placeholder="Diretor(a), gerente, responsável legal" required>
-          </div>
-          <div class="field">
-            <label for="responsavel">Nome do responsável *</label>
-            <input type="text" id="responsavel" name="responsavel" placeholder="Nome completo" required>
-          </div>
-          <div class="field">
-            <label for="email">E-mail corporativo *</label>
-            <input type="email" id="email" name="email" placeholder="nome@empresa.com.br" required>
-          </div>
-          <div class="field">
-            <label for="telefone">Telefone *</label>
-            <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
-          </div>
+          <div class="field full"><label for="empresa">Nome da empresa *</label><input type="text" id="empresa" name="empresa" placeholder="Razão social" required></div>
+          <div class="field"><label for="cnpj">CNPJ *</label><input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" required></div>
+          <div class="field"><label for="cargo">Cargo / função *</label><input type="text" id="cargo" name="cargo" placeholder="Diretor(a), gerente, responsável legal" required></div>
+          <div class="field"><label for="responsavel">Nome do responsável *</label><input type="text" id="responsavel" name="responsavel" placeholder="Nome completo" required></div>
+          <div class="field"><label for="email">E-mail corporativo *</label><input type="email" id="email" name="email" placeholder="nome@empresa.com.br" required></div>
+          <div class="field"><label for="telefone">Telefone *</label><input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required></div>
         </div>
       </div>
 
@@ -522,9 +428,9 @@
 <script>
   document.getElementById('meuFormularioOOH').addEventListener('submit', function(e) {
     e.preventDefault();
-    var btn     = document.getElementById('btnSubmit');
+    var btn = document.getElementById('btnSubmit');
     var sucesso = document.getElementById('mensagem-sucesso');
-    var erro    = document.getElementById('mensagem-erro');
+    var erro = document.getElementById('mensagem-erro');
     btn.disabled = true; btn.textContent = 'Enviando…';
     sucesso.style.display = 'none'; erro.style.display = 'none';
     var formData = new FormData(this);
@@ -549,9 +455,9 @@
     var sections = document.querySelectorAll('.ooh-section[data-section]');
     var filled = 0, highest = 0;
     sections.forEach(function(sec) {
-      var idx    = parseInt(sec.getAttribute('data-section'));
+      var idx = parseInt(sec.getAttribute('data-section'));
       var radios = sec.querySelectorAll('input[type="radio"]:checked');
-      var texts  = sec.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"]');
+      var texts = sec.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"]');
       var hasText = false;
       texts.forEach(function(t){ if(t.value.trim()) hasText = true; });
       if (radios.length > 0 || hasText) { filled++; if (idx > highest) highest = idx; }
